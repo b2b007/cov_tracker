@@ -31,42 +31,44 @@ class CountryDataPage extends StatelessWidget {
         backgroundColor: Colors.black,
         elevation: 0,
       ),
-      body: Column(
-        children: [
-          CountryBoard(countryName: country.country),
-          Expanded(
-            child: SfMaps(
-              layers: [
-                MapShapeLayer(
-                  source: MapShapeSource.asset(
-                    "world_map.json",
-                    shapeDataField: "name",
-                    dataCount: 1,
-                    primaryValueMapper: (index) => country.country,
-                    shapeColorValueMapper: (index) => Colors.green,
-                  ),
-                  showDataLabels: false,
-                  tooltipSettings: MapTooltipSettings(
-                    color: Colors.grey[700],
+      body: SafeArea(
+        child: Column(
+          children: [
+            CountryBoard(countryName: country.country),
+            Expanded(
+              child: SfMaps(
+                layers: [
+                  MapShapeLayer(
+                    source: MapShapeSource.asset(
+                      "world_map.json",
+                      shapeDataField: "name",
+                      dataCount: 1,
+                      primaryValueMapper: (index) => country.country,
+                      shapeColorValueMapper: (index) => Colors.green,
+                    ),
+                    showDataLabels: false,
+                    tooltipSettings: MapTooltipSettings(
+                      color: Colors.grey[700],
+                      strokeColor: Colors.white,
+                      strokeWidth: 2,
+                    ),
                     strokeColor: Colors.white,
-                    strokeWidth: 2,
+                    strokeWidth: 0.5,
+                    shapeTooltipBuilder: (BuildContext context, int index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          country.country,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      );
+                    },
                   ),
-                  strokeColor: Colors.white,
-                  strokeWidth: 0.5,
-                  shapeTooltipBuilder: (BuildContext context, int index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        country.country,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    );
-                  },
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
