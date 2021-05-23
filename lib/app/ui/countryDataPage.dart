@@ -40,7 +40,7 @@ class CountryDataPage extends StatelessWidget {
                 layers: [
                   MapShapeLayer(
                     source: MapShapeSource.asset(
-                      "world_map.json",
+                      "assets/world_map.json",
                       shapeDataField: "name",
                       dataCount: 1,
                       primaryValueMapper: (index) => country.country,
