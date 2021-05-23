@@ -1,0 +1,7 @@
+GET {{baseUrl}}/totals?format=json HTTP/1.1
+X-Rapidapi-Key: {{key}}
+
+###
+
+GET {{baseUrl}}/country?name=italy HTTP/1.1
+X-Rapidapi-Key: {{key}}
